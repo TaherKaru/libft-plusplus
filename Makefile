@@ -48,8 +48,8 @@ WARN		=	$(YELLOW)[WARN]$(END)
 
 SRC_DIR = src
 INCLUDE_DIR = include
-OBJ_DIR = obj
-LIB_DIR = lib
+OBJ_DIR = build/obj
+LIB_DIR = build/lib
 SRC			=	$(wildcard $(SRC_DIR)/*.c)
 OBJ			=	$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
 
@@ -60,11 +60,13 @@ OBJ			=	$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
 all:		$(NAME)
 	@echo -e "$(GREEN) libft.a has been successfuly built$(END)"
 
-$(NAME):	$(OBJ)
+$(NAME):	 $(OBJ)
 	@echo -e "$(CYAN) Object files has been built, Now creating libft.a...$(END)"
+	@mkdir -p $(LIB_DIR)
 	$(AR) $(LIB_DIR)/$(NAME) $(OBJ)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -I $(INCLUDE_DIR) -o $@ -c $<
 
 clean:
