@@ -1,6 +1,7 @@
 TODO.md
 utils.c
 build
+.nvim_auto_cmds.lua
 
 # Object files
 *.o
