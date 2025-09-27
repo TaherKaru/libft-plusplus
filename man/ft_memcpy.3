@@ -1,0 +1,17 @@
+.TH FT_MEMCPY 3 "27 Sep 2025" "libftplusplus" "Library Functions"
+.SH NAME
+ft_memcpy \- copy memory area
+.SH SYNOPSIS
+#include <libftplusplus.h>
+
+void *ft_memcpy(void *dest, const void *src, size_t n);
+.SH DESCRIPTION
+Copies n bytes from memory area src to memory area dest.
+.SH RETURN VALUE
+Returns a pointer to dest.
+.SH EXAMPLE
+#include <libftplusplus.h>
+
+char src[] = "Hello";
+char dest[6];
+ft_memcpy(dest, src, 6);
